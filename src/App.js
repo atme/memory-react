@@ -1,25 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   render() {
+    const game = this.props.game;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="game">
+        {game.getCards().map((card, i) => {
+          let boxClass = ["card"];
+          if(card.isOpened() || card.isDeactivated()) {
+            boxClass.push('show');
+          }
+
+          if(card.isDeactivated()) {
+            boxClass.push('disabled');
+          }
+          
+          return (
+            <div className={boxClass.join(' ')}
+                 onClick={game.onPress.bind(game, i)}
+            >
+              <div className="flipper">
+                <div className="card__front">?</div>
+                <div className="card__back">{card.getValue()}</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     );
   }
