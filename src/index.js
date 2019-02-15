@@ -6,7 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import Game from './models/Game';
 import generatePairOfCards from './helpers/generatePairOfCards';
 
-const cards = generatePairOfCards([1, 2, 3], true);
+const cards = generatePairOfCards([
+    "🎃", "👾", "👽", "🤖", "👑", "🐷"
+], true);
 
 const update = function() {
     ReactDOM.render(<App game={this}/>, document.getElementById('root'));
