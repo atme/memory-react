@@ -4,10 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Game from './models/Game';
+import generatePairOfCards from './helpers/generatePairOfCards';
 
-new Game(function() {
+const cards = generatePairOfCards([1, 2, 3], true);
+
+const update = function() {
     ReactDOM.render(<App game={this}/>, document.getElementById('root'));
-});
+};
+
+new Game(cards, update);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

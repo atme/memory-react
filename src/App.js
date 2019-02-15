@@ -1,35 +1,31 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 
-class App extends Component {
-  render() {
-    const game = this.props.game;
-    return (
-      <div className="game">
-        {game.getCards().map((card, i) => {
-          let boxClass = ["card"];
-          if(card.isOpened() || card.isDeactivated()) {
-            boxClass.push('show');
-          }
+function App(props) {
+    return props.game.getCards().map((card, i) => {
+        return <Card game={props.game} card={card} index={i} key={i} />
+    });
+}
 
-          if(card.isDeactivated()) {
-            boxClass.push('disabled');
-          }
-          
-          return (
-            <div className={boxClass.join(' ')}
-                 onClick={game.onPress.bind(game, i)}
-            >
-              <div className="flipper">
-                <div className="card__front">?</div>
-                <div className="card__back">{card.getValue()}</div>
-              </div>
-            </div>
-          );
-        })}
+function Card(props) {
+    const game = props.game;
+    const card = props.card;
+    const i = props.index;
+
+    const boxClass = [
+        "card",
+        card.isOpened() || card.isDeactivated() ? 'show' : '',
+        card.isDeactivated() ? 'disabled' : ''
+    ];
+
+    return (
+      <div className={boxClass.join(' ')} onClick={game.onPress.bind(game, i)}>
+        <div className="flipper">
+          <div className="card__front">?</div>
+          <div className="card__back">{card.getValue()}</div>
+        </div>
       </div>
     );
-  }
 }
 
 export default App;

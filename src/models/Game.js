@@ -1,21 +1,9 @@
-import Card from './Card';
-
 class Game {
-    constructor(callbackUpdate) {
+    constructor(cards, callbackUpdate) {
         this.openedCard = null;
-    
-        this.cards = [
-            new Card(1),
-            new Card(1),
-            new Card(2),
-            new Card(2),
-            new Card(3),
-            new Card(3),
-            new Card(4),
-            new Card(4),
-        ];
-
+        this.cards = cards;
         this.updated = callbackUpdate;
+
         this.updated();
     }
 
