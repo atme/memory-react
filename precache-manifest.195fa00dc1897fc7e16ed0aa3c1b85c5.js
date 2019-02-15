@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/memory-react/static/js/runtime~main.98abbd80.js"
   },
   {
-    "revision": "bae187973543b0d88d39d5476e9e3aba",
+    "revision": "53301bde2f2ead5d7af51a4a45f705eb",
     "url": "/memory-react/index.html"
   }
 ];
