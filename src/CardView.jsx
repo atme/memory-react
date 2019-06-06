@@ -14,8 +14,20 @@ function CardView(props: CardProps) {
     card.status === 'disable' ? 'disabled' : '',
   ].join(' ');
 
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      handleClick();
+    }
+  };
+
   return (
-    <div className={classes} onClick={handleClick}>
+    <div
+      role="button"
+      tabIndex={0}
+      className={classes}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+    >
       <div className="flipper">
         <div className="card__front">?</div>
         <div className="card__back">{card.symbol}</div>
